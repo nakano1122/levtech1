@@ -7,17 +7,18 @@
     </head>
     <body>
         <h1>Blog Name</h1>
-        <form action="/posts" method="POST">
+        <form action="/posts/{{ $post->id }}" method="POST">
             @csrf
-            <div class="title">
+            @method('PUT')
+            <div class="content__title">
                 <h2>Title</h2>
-                //編集画面（タイトル）
+                <input type='text' name='post[title]' value="{{ $post->title }}">
             </div>
-            <div class="body">
+            <div class="content__body">
                 <h2>Body</h2>
-                //編集画面（ボディ）
+                <input type='text' name='post[body]' value="{{ $post->body }}"
             </div>
-            //編集終了ボタン（保存）
+            <input type="submit" value="保存">
         </form>
     </body>
 </html>
